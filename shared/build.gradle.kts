@@ -27,7 +27,6 @@ kotlin {
     }
 
     //Dependencies versions
-    val coroutinesVersion = "1.6.4"
     val ktorVersion = "2.2.1"
     val koinVersion = "3.3.2"
 
@@ -40,9 +39,8 @@ kotlin {
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.client.encoding)
 
-            implementation("co.touchlab:kermit:2.0.3") //Add latest version
-            //Use api so that the android app can use it as well
-            api("io.insert-koin:koin-core:$koinVersion")
+            implementation(libs.kermit)
+            api(libs.koin.core)
         }
 
         commonTest.dependencies {
@@ -53,13 +51,13 @@ kotlin {
 
 
         androidMain.dependencies {
-            implementation("io.ktor:ktor-client-android:$ktorVersion")
-            api("io.insert-koin:koin-android:$koinVersion")
+            implementation(libs.ktor.client.android)
+            api(libs.koin.android)
         }
 
 
         iosMain.dependencies {
-            implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+            implementation(libs.ktor.client.darwin)
         }
 
 
